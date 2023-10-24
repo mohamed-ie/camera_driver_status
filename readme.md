@@ -3,7 +3,7 @@
 Gnome Extension that show current camera driver status (Loaded or not), also allow you to load - unload driver from kernal.
 
 
-## Installation
+## How to use
 
 ```bash
 git clone https://github.com/mohamed-ie/camera_driver_status
