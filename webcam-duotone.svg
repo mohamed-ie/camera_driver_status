@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="24"
+   height="24"
+   fill="#26a269"
+   viewBox="0 0 256 256"
+   version="1.1"
+   id="svg6"
+   sodipodi:docname="webcam-duotone.svg"
+   inkscape:version="1.2.2 (b0a8486541, 2022-12-01)"
+   inkscape:export-filename="webcam-duotone.svg"
+   inkscape:export-xdpi="96"
+   inkscape:export-ydpi="96"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs10" />
+  <sodipodi:namedview
+     id="namedview8"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     showgrid="false"
+     showguides="true"
+     inkscape:zoom="34.958333"
+     inkscape:cx="3.9332539"
+     inkscape:cy="15.761621"
+     inkscape:window-width="1920"
+     inkscape:window-height="1011"
+     inkscape:window-x="0"
+     inkscape:window-y="32"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg6" />
+  <g
+     id="g272"
+     transform="matrix(1.3341743,0,0,1.3426803,-42.732741,-10.995323)">
+    <path
+       d="m 128,32 a 72,72 0 1 0 72,72 72,72 0 0 0 -72,-72 z m 0,104 a 32,32 0 1 1 32,-32 32,32 0 0 1 -32,32 z"
+       opacity="0.2"
+       id="path2" />
+    <path
+       d="M 168,104 C 168,87.821528 158.25426,73.235979 143.30757,67.045096 128.36091,60.854226 111.15702,64.277307 99.717166,75.717166 88.277307,87.157024 84.854226,104.36091 91.045096,119.30757 97.235979,134.25426 111.82153,144 128,144 c 22.09139,0 40,-17.90861 40,-40 z m -64,0 C 104,82.616797 129.85133,71.911924 144.9697,87.030299 160.08808,102.14867 149.3832,128 128,128 c -13.25483,0 -24,-10.74517 -24,-24 z m 103.89804,-3.99055 C 205.76227,57.455008 170.62159,24.077707 128,24.077707 c -42.621591,0 -77.762273,33.377301 -79.898039,75.931743 -2.135846,42.55605 37.434225,82.95663 80.267089,82.95442 42.27473,-0.074 80.5605,-33.17937 79.52899,-82.95442 z M 64,104 c 0,-25.885556 15.593186,-49.222434 39.50789,-59.127846 23.91466,-9.905393 51.44087,-4.428462 69.74465,13.875311 18.30377,18.303773 23.7807,45.829985 13.87531,69.744645 C 177.22243,152.40681 153.88556,168 128,168 92.669768,167.96142 64.038579,139.33023 64,104 Z"
+       id="path4"
+       sodipodi:nodetypes="sssssssssscsscccssscc" />
+  </g>
+</svg>

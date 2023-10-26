@@ -1,5 +1,5 @@
 {
-  "shell-version": ["45"],
+  "shell-version": ["43","44"],
   "uuid": "camera_driver_status",
   "name": "Camera Driver Status",
   "description": "GNOME Shell extension to display camera driver status"

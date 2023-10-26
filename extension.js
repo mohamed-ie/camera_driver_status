@@ -1,55 +1,55 @@
-import St from "gi://St";
-import GLib from "gi://GLib";
+const { St, GLib, Gio } = imports.gi;
+const Main = imports.ui.main;
+const Me = imports.misc.extensionUtils.getCurrentExtension();
 
-import { Extension } from "resource:///org/gnome/shell/extensions/extension.js";
-import * as Main from "resource:///org/gnome/shell/ui/main.js";
-import * as PanelMenu from "resource:///org/gnome/shell/ui/panelMenu.js";
+let panelButton, panelButtonIcon;
 
-export default class ExampleExtension extends Extension {
-  enable() {
-    let isCameraOn = () => {
-      let [result, stdout] = GLib.spawn_command_line_sync(
-        'bash -c "lsmod | grep uvcvideo"'
-      );
-      return result && stdout.toString().trim() !== "";
-    };
+function isCameraOn() {
+  let [success, stdout] = GLib.spawn_command_line_sync(
+    'bash -c "lsmod | grep uvcvideo"'
+  );
+  return success && stdout.toString().trim() !== "";
+}
 
-    this._indicator = new PanelMenu.Button(0.0, this.metadata.name, false);
+function init() {
+  panelButton = new St.Bin({
+    reactive: true,
+    can_focus: true,
+    track_hover: true,
+    style_class: "panel-button",
+  });
 
-    this.icon = new St.Icon({
-      icon_name: `camera-${isCameraOn() ? "on" : "off"}-symbolic`,
-      style_class: "camera-icon",
-      icon_size: 24,
-    });
+  panelButtonIcon = new St.Icon({
+    reactive: true,
+    style_class: "system-status-icon",
+  });
 
-    this.button = new St.Button({
-      reactive: true,
-      can_focus: true,
-      track_hover: true,
-      style_class: "camera-driver-status-button",
-    });
+  panelButton.set_child(panelButtonIcon);
 
-    let updateIconName = () =>
-      (this.icon.icon_name = `camera-${isCameraOn() ? "on" : "off"}-symbolic`);
+  panelButton.connect("button-press-event", () => {
+    GLib.spawn_command_line_async(
+      `pkexec sudo modprobe -${isCameraOn() ? "r" : "a"} uvcvideo`
+    );
+  });
+}
 
-    this.button.connect("clicked", () => {
-      GLib.spawn_command_line_async(
-        `pkexec modprobe -${isCameraOn() ? "r" : "a"} uvcvideo`
-      );
-    });
+let updateIcon = () =>
+  panelButtonIcon.set_gicon(
+    Gio.icon_new_for_string(
+      Me.dir.get_path() + `/webcam-${isCameraOn() ? "duotone" : "slash-duotone"}.svg`
+    )
+  );
 
-    this.button.set_child(this.icon);
-    this._indicator.add_child(this.button);
+function enable() {
+  Main.panel._rightBox.insert_child_at_index(panelButton, 1);
 
-    //incase driver loaded from other source
-    GLib.timeout_add_seconds(GLib.PRIORITY_DEFAULT, 1, updateIconName);
+  // In case driver is loaded from another source
+  GLib.timeout_add_seconds(GLib.PRIORITY_DEFAULT, 1, () => {
+    updateIcon();
+    return true;
+  });
+}
 
-    // Add the indicator to the panel
-    Main.panel.addToStatusArea(this.uuid, this._indicator);
-  }
-
-  disable() {
-    this._indicator?.destroy();
-    this._indicator = null;
-  }
+function disable() {
+  Main.panel._rightBox.remove_child(panelButton);
 }
